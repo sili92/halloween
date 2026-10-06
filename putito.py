@@ -1953,13 +1953,11 @@ def handle_slot_spin(call):
   init_user(clean_clicker, call.from_user.id)
   if won:
     db['users'][clean_clicker]['caramelos'] += ganancia
-    if db['users'][clean_user]['caramelos'] < 0:
-      db['users'][clean_user]['caramelos'] = 0
     resultado_txt = f"¡𝗏𝗂𝖼𝗍𝗈𝗋𝗂𝖺! Has ganado {ganancia} caramelos 🍬."
   else:
-    db['users'][clean_user]['caramelos'] -= bet
-    if db['users'][clean_user]['caramelos'] < 0:
-      db['users'][clean_user]['caramelos'] = 0
+    db['users'][clean_clicker]['caramelos'] -= bet
+    if db['users'][clean_clicker]['caramelos'] < 0:
+      db['users'][clean_clicker]['caramelos'] = 0
     resultado_txt = f"No hubo suerte esta vez. Perdiste {bet} caramelos."
 
   text = (
@@ -1974,7 +1972,6 @@ def handle_slot_spin(call):
     bot.edit_message_text(text, call.message.chat.id, call.message.message_id, reply_markup=None)
   except Exception:
     pass
-
 # ==========================================
 # === DINÁMICA: GOLDEN PUMPKIN ===
 # ==========================================
