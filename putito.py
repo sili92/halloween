@@ -1731,7 +1731,7 @@ def send_eye_game(chat_id, bet, message_id=None):
   )
 
   markup = InlineKeyboardMarkup(row_width=2)
-  special_numbers = ["1", "2", "3", "4"]
+  special_numbers = ["𝟏", "𝟐", "𝟑", "𝟒"]
   buttons = [
       InlineKeyboardButton(
           f"{special_numbers[i]}",
