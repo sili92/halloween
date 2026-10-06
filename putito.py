@@ -67,7 +67,7 @@ WITCH_TYPES = {
         'photo': 'https://pin.it/4mD78Eta5',
         'caption': (
             '   ⬚   ㅤㅤ     ¡𝗎𝗇𝖺 𝖻𝗋𝗎𝗃𝖺 𝗇𝗈𝖼𝗍𝗎𝗋𝗇𝖺 𝗁𝖺'
-            ' 𝖾𝗆𝖾𝗋𝗀𝗂𝖽𝗈!\nㅤㅤㅤ ㅤ  𝖺𝗍𝗋𝖺𝗉𝖺𝗅𝖺 𝗉𝖺𝗋𝖺 𝗊𝗎𝖾𝖽𝖺𝗋𝗍𝖾 𝖼𝗈𝗇 𝗌𝗎'
+            ' 𝖾𝗆𝖾𝗋𝗀𝗂𝖽𝗈!\nㅤㅤㅤ ㅤ  𝖺𝗍𝗋𝖺𝗉𝖺𝗅𝖺 𝘱𝖺𝗋𝖺 𝗊𝗎𝖾𝖽𝖺𝗋𝗍𝖾 𝖼𝗈𝗇 𝗌𝗎'
             ' 𝗍𝖾𝗌𝗈𝗋𝗈.ㅤㅤ ،͟،'
         ),
         'caughtCaption': lambda user: (
@@ -305,6 +305,26 @@ def init_bg_user(username, user_id=None):
   if db['users'][clean_user]['bg_date'] != get_today_str_ve():
     db['users'][clean_user]['bg_date'] = get_today_str_ve()
     db['users'][clean_user]['bg_attempts'] = 0
+
+
+def init_shop_daily(username, user_id=None):
+  """Inicializa los contadores diarios de la tienda de pociones."""
+  init_user(username, user_id)
+  clean_user = sanitize_username(username)
+  today = get_today_str_ve()
+
+  if 'shop_date' not in db['users'][clean_user]:
+    db['users'][clean_user]['shop_date'] = today
+    db['users'][clean_user]['shop_veneno_uses'] = 0
+    db['users'][clean_user]['shop_milagrosa_uses'] = 0
+    db['users'][clean_user]['shop_recompensa_uses'] = 0
+    db['users'][clean_user]['shop_escudo_uses'] = 0
+  elif db['users'][clean_user]['shop_date'] != today:
+    db['users'][clean_user]['shop_date'] = today
+    db['users'][clean_user]['shop_veneno_uses'] = 0
+    db['users'][clean_user]['shop_milagrosa_uses'] = 0
+    db['users'][clean_user]['shop_recompensa_uses'] = 0
+    db['users'][clean_user]['shop_escudo_uses'] = 0
 
 
 # ==========================================
@@ -735,8 +755,8 @@ def send_games(message):
       " 𝗉𝗎𝖾𝖽𝖾𝗌 𝖾𝗇𝖼𝗈𝗇𝗍𝗋𝖺𝗋 𝗎𝗇𝖺 𝖿𝗈𝗋𝗍𝗎𝗇𝖺 𝗈 𝘱𝖾𝗋𝖽𝖾𝗋𝗅𝖺.\n"
       "ㅤ𖥻  /cementerio  ↝  𝗅𝖺𝗌 𝗍𝗎𝗆𝖻𝖺𝗌 𝖽𝖾 𝗏𝖺𝗆𝗉, 𝖾𝗅𝗂𝗃𝖾 𝗌𝖺𝖻𝗂𝖺𝗆𝖾𝗇𝗍𝖾.\n"
       "ㅤ𖥻  /slotween  ↝  𝖿𝗂𝗃𝖺 𝗍𝗎 𝗌𝗎𝖾𝗋𝗍𝖾 𝖾𝗇 𝖾𝗅 𝗍𝗋𝖺𝗀𝖺𝗉𝖾𝗋𝗋𝖺𝗌.\n"
-      "ㅤ𖥻  /ojos  ↝  𝗍𝖾𝗇 𝖼𝗎𝗂𝖽𝖺𝖽𝗈 𝗒 𝖾𝗅𝗂𝗃𝖾 𝖾𝗅 𝗈𝗃𝗈 𝖼𝗈𝗋𝗋𝖾𝗀𝗍𝗈\n"
-      "ㅤ𖥻  /shop  ↝  𝖼𝗈𝗆𝗉𝗋𝖺𝗅𝖾 𝖺 𝗅𝖺 𝖻𝗋𝗎𝗃𝖺 𝗅𝖺 𝗿𝗎𝖾 𝗇𝖾𝖼𝖾𝗌𝗂𝗍𝖾𝗌\n"
+      "ㅤ𖥻  /ojos  ↝  𝗍𝖾𝗇 𝖼𝗎𝗂𝖽𝖺𝖽𝗈 𝗒 𝖾𝗅𝗂𝗃𝖾 𝖾𝗅 𝗈𝗃𝗈 𝖼𝗈𝗋𝗋𝖾𝖼𝗍𝗈\n"
+      "ㅤ𖥻  /shop  ↝  𝖼𝗈𝗆𝗉𝗋𝖺𝗅𝖾 𝖺 𝗅𝖺 𝖻𝗋𝗎𝗃𝖺 𝗅𝖺 𝗋𝗎𝖾 𝗇𝖾𝖼𝖾𝗌𝗂𝗍𝖾𝗌\n"
       "ㅤ𖥻  /items  ↝  consulta tu inventario de pociones"
   )
   bot.reply_to(message, text)
@@ -1310,7 +1330,7 @@ def start_blackjack(message):
       'ㅤㅤㅤ𝖽𝖾𝖻𝖾𝗌 𝗉𝖾𝖽𝗂𝗋 𝗁𝖺𝗌𝗍𝖺 𝗅𝗅𝖾𝗀𝖺𝗋 𝖺 21 𝘱𝖺𝗋𝖺 𝖺𝗌í \n'
       'ㅤㅤㅤ𝗀𝖺𝗇𝖺𝗋, 𝗉𝖾𝗋𝗈, ¡𝗍𝖾𝗇 𝖼𝗎𝗂𝖽𝖺𝖽𝗈! 𝗌𝗂 𝗍𝖾 𝗉𝖺𝗌𝖺𝗌, \n'
       'ㅤㅤㅤ𝗏𝖺𝗆𝗉 𝗇𝗈 𝗍𝖾𝗇𝖽𝗋á 𝘱𝗂𝖾𝖽𝖺𝖽 𝖼𝗈𝗇𝗍𝗂𝗀𝗈.\n\n'
-      ' 𝗎𝗌𝖺 /pedir 𝗉𝖺𝗋𝖺 𝗌𝗎𝗆𝖺𝗋 𝗒 /retirarme 𝗼𝗎𝗂𝖾𝗋𝖺𝗌 𝖼𝖾𝗋𝗋𝖺𝗋.'
+      ' 𝗎𝗌𝖺 /pedir 𝗉𝖺𝗋𝖺 𝗌𝗎𝗆𝖺𝗋 𝗒 /retirarme 𝗈𝗎𝗂𝖾𝗋𝖺𝗌 𝖼𝖾𝗋𝗋𝖺𝗋.'
   )
   bot.reply_to(message, text)
 
@@ -1469,7 +1489,7 @@ def start_coraline(message):
       'ㅤㅤ𝗍𝗈𝗆𝖺𝗋 𝖽𝗂𝖿í𝖼𝗂𝗅𝖾𝗌 𝖽𝖾𝖼𝗂𝗌𝗂𝗈𝗇𝖾𝗌... ¡𝖼𝗈𝗇𝖿𝗂𝖺𝗆𝗈𝗌 𝖾𝗇 𝗍𝗂!\n\n'
       'ㅤㅤㅤㅤㅤ𝖿𝗋𝖾𝗇𝗍𝖾 𝖺 𝗍í, 𝗁𝖺𝗒 𝖼𝗎𝖺𝗍𝗋𝗈 𝘱𝗎𝖾𝗋𝗍𝖺𝗌... \n'
       'ㅤㅤ𝗍𝗈𝖽𝖺𝗌 𝗍𝗂𝖾𝗇𝖾𝗇 𝗎𝗇 𝖽𝗂𝖿𝖾𝗋𝖾𝗇𝗍𝖾 𝖽𝖾𝗌𝗍𝗂𝗇𝗈, 𝖽𝖾𝗌𝖽𝖾 𝗅𝗈 \n'
-      'ㅤㅤ𝗻𝗎𝖾𝗇𝗈 𝗁𝖺𝗌𝗍𝖺 𝗅𝗈 𝗍𝖾𝗋𝗋𝗂𝖻𝗅𝖾. ¡𝖾𝗅𝗂𝗀𝖾 𝗎𝗇𝖺 𝗌𝖺𝖻𝗂𝖺𝗆𝖾𝗇𝗍𝖾!'
+      'ㅤㅤ𝗇𝗎𝖾𝗇𝗈 𝗁𝖺𝗌𝗍𝖺 𝗅𝗈 𝗍𝖾𝗋𝗋𝗂𝖻𝗅𝖾. ¡𝖾𝗅𝗂𝗀𝖾 𝗎𝗇𝖺 𝗌𝖺𝖻𝗂𝖺𝗆𝖾𝗇𝗍𝖾!'
   )
   markup = InlineKeyboardMarkup(row_width=4)
   markup.add(
@@ -1546,17 +1566,23 @@ def cmd_shop(message):
     return bot.reply_to(message, "ㅤ⬚  necesitas un @username en Telegram.  ،͟,")
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
+  init_shop_daily(clean_user, message.from_user.id)
 
   balance = db['users'][clean_user]['caramelos']
+  user_data = db['users'][clean_user]
+  veneno_usado = user_data.get('shop_veneno_uses', 0)
+  milagrosa_usado = user_data.get('shop_milagrosa_uses', 0)
+  recompensa_usado = user_data.get('shop_recompensa_uses', 0)
+  escudo_usado = user_data.get('shop_escudo_uses', 0)
 
   text = (
       "ㅤ꒰ 🧛‍♂️ ꒱ㅤㅤ ㅤㅤㅤㅤ𝓥𝖺𝗆𝗉'𝗌 𝖲𝗁𝗈𝗉.\n\n"    
       f"Saldo actual: {balance} 🍬 \n\n"
       "𝖢𝗈𝗆𝗉𝗋𝖺 𝗈𝖻𝗃𝖾𝗍𝗈𝗌 𝗆á𝗀𝗂𝖼𝗈𝗌 𝗀𝖺𝗌𝗍𝖺𝗇𝖽𝗈 𝗍𝗎𝗌 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌:\n\n"
-      "𖥻 `/buy veneno` (Costo: 250 ) ↝ 𝖤𝗅 𝗃𝗎𝗀𝖺𝖽𝗈𝗋 𝖺 𝗊𝗎𝗂é𝗇 𝖾𝗇𝗏𝖾𝗇𝖾𝗇𝖾𝗌 𝗇𝗈 𝗉𝗈𝖽𝗋á 𝗃𝗎𝗀𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝟦 𝗁𝗈𝗋𝖺𝗌.\n"
-      "𖥻 `/buy escudo` (Costo: 400 ) ↝ 𝖳𝖾 𝘱𝗋𝗈𝗍𝖾𝗀𝖾 𝖽𝖾 𝗆𝖺𝗅𝖽𝗂𝖼𝗂𝗈𝗇𝖾𝗌 𝗒 𝗏𝖾𝗇𝖾𝗇𝗈𝗌.\n"
-      "𖥻 `/buy recompensa` (Costo: 500 ) ↝ 𝖳𝖾 𝗈𝗍𝗈𝗋𝗀𝖺 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇𝗍𝗋𝖾 𝟧𝟢𝟢 𝗒 𝟣𝟢𝟢𝟢 𝗌𝖾𝗀ú𝗇 𝗅𝖺 𝗌𝗎𝖾𝗋𝗍𝖾.\n"
-      "𖥻 `/buy milagrosa` (Costo: 100 ) ↝ 𝖰𝗎𝗂𝗍𝖺 𝖺𝗅𝖾𝖺𝗍𝗈𝗋𝗂𝖺𝗆𝖾𝗇𝗍𝖾 𝖾𝗇𝗍𝗋𝖾 𝟢 y 𝟤𝟢𝟢 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 a 𝗈𝗍𝗋𝗈 𝗎𝗌𝗎𝖺𝗋𝗂𝗈 𝗊𝗎𝖾 𝖾𝗅𝗂𝗃𝖺𝗌."
+      f"𖥻 `/buy veneno` (Costo: 600 ) ↝ 𝖤𝗅 𝗃𝗎𝗀𝖺𝖽𝗈𝗋 𝖺 𝗊𝗎𝗂é𝗇 𝖾𝗇𝗏𝖾𝗇𝖾𝗇𝖾𝗌 𝗇𝗈 𝗉𝗈𝖽𝗋á 𝗃𝗎𝗀𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝟦 𝗁𝗈𝗋𝖺𝗌. (Usos hoy: {veneno_usado}/3)\n"
+      f"𖥻 `/buy escudo` (Costo: 800 ) ↝ 𝖳𝖾 𝘱𝗋𝗈𝗍𝖾𝗀𝖾 𝖽𝖾 𝗆𝖺𝗅𝖽𝗂𝖼𝗂𝗈𝗇𝖾𝗌 𝗒 𝗏𝖾𝗇𝖾𝗇𝗈𝗌. (Usos hoy: {escudo_usado}/1)\n"
+      f"𖥻 `/buy recompensa` (Costo: 1000 ) ↝ 𝖳𝖾 𝗈𝗍𝗈𝗋𝗀𝖺 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇𝗍𝗋𝖾 𝟣𝟢𝟢𝟢 𝗒 𝟣𝟧𝟢𝟢𝟢 𝗌𝖾𝗀ú𝗇 𝗅𝖺 𝗌𝗎𝖾𝗋𝗍𝖾. (Usos hoy: {recompensa_usado}/3)\n"
+      f"𖥻 `/buy milagrosa` (Costo: 500 ) ↝ 𝖰𝗎𝗂𝗍𝖺 𝖺𝗅𝖾𝖺𝗍𝗈𝗋𝗂𝖺𝗆𝖾𝗇𝗍𝖾 𝖾𝗇𝗍𝗋𝖾 𝟢 y 𝟧𝟢𝟢 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 a 𝗈𝗍𝗋𝗈 𝗎𝗌𝗎𝖺𝗋𝗂𝗈 𝗊𝗎𝖾 𝖾𝗅𝗂𝗃𝖺𝗌. (Usos hoy: {milagrosa_usado}/3)"
   )
   bot.reply_to(message, text, parse_mode="Markdown")
 
@@ -1568,10 +1594,12 @@ def cmd_buy(message):
     return bot.reply_to(message, "ㅤ⬚  necesitas un @username en Telegram.  ،͟,")
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
+  init_shop_daily(clean_user, message.from_user.id)
 
   user_id = message.from_user.id
   args = message.text.lower().split()
-  balance = db['users'][clean_user]['caramelos']
+  user_data = db['users'][clean_user]
+  balance = user_data['caramelos']
 
   if len(args) < 2:
     bot.reply_to(
@@ -1584,28 +1612,37 @@ def cmd_buy(message):
   item = args[1]
 
   if item == "recompensa":
-    cost = 500
+    cost = 1000
+    usos = user_data.get('shop_recompensa_uses', 0)
+    if usos >= 3:
+      bot.reply_to(message, "ㅤ⬚  ya has usado la poción de recompensa 3 veces hoy. ¡Vuelve mañana!  ،͟,")
+      return
     if balance < cost:
-      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 500 ).  ،͟,")
+      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 1000 ).  ،͟,")
       return
     db['users'][clean_user]['caramelos'] -= cost
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
-    premio = random.randint(500, 1000)
+    premio = random.randint(1000, 15000)
     db['users'][clean_user]['caramelos'] += premio
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
+    db['users'][clean_user]['shop_recompensa_uses'] = usos + 1
     new_bal = db['users'][clean_user]['caramelos']
     bot.reply_to(
         message,
-        f" ¡Has comprado la **recompensa mágica**!\nLa suerte ha decidido darte +{premio} caramelos (Saldo actual: {new_bal} 🍬)",
+        f" ¡Has comprado la **recompensa mágica**!\nLa suerte ha decidido darte +{premio} caramelos (Saldo actual: {new_bal} 🍬)\nUsos hoy: {usos + 1}/3",
         parse_mode="Markdown",
     )
 
   elif item == "veneno":
-    cost = 250
+    cost = 600
+    usos = user_data.get('shop_veneno_uses', 0)
+    if usos >= 3:
+      bot.reply_to(message, "ㅤ⬚  ya has usado la poción venenosa 3 veces hoy. ¡Vuelve mañana!  ،͟,")
+      return
     if balance < cost:
-      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 250 ).  ،͟,")
+      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 600 ).  ،͟,")
       return
     db['users'][clean_user]['caramelos'] -= cost
     if db['users'][clean_user]['caramelos'] < 0:
@@ -1614,17 +1651,25 @@ def cmd_buy(message):
     if user_id not in inventario:
       inventario[user_id] = {}
     inventario[user_id]["pocion_venenosa"] = inventario[user_id].get("pocion_venenosa", 0) + 1
+    db['users'][clean_user]['shop_veneno_uses'] = usos + 1
 
     bot.reply_to(
         message,
-        " ¡Has comprado una **poción venenosa**!\n Se ha guardado in tu inventario (`/items`).\n Para utilizarla usa `/envenenar @usuario`.",
+        f" ¡Has comprado una **poción venenosa**!\n Se ha guardado en tu inventario (`/items`).\n Para utilizarla usa `/envenenar @usuario`.\nUsos hoy: {usos + 1}/3",
         parse_mode="Markdown",
     )
 
   elif item == "escudo":
-    cost = 400
+    cost = 800
+    usos = user_data.get('shop_escudo_uses', 0)
+    if usos >= 1:
+      bot.reply_to(message, "ㅤ⬚  ya has usado la poción de escudo hoy. ¡Vuelve mañana!  ،͟,")
+      return
+    if inventario.get(user_id, {}).get("escudo_activo"):
+      bot.reply_to(message, "ㅤ⬚  ya tienes un escudo activo. No puedes comprar otro.  ،͟,")
+      return
     if balance < cost:
-      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 400 ).  ،͟,")
+      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 800 ).  ،͟,")
       return
     db['users'][clean_user]['caramelos'] -= cost
     if db['users'][clean_user]['caramelos'] < 0:
@@ -1632,16 +1677,21 @@ def cmd_buy(message):
     if user_id not in inventario:
       inventario[user_id] = {}
     inventario[user_id]["escudo_activo"] = True
+    db['users'][clean_user]['shop_escudo_uses'] = usos + 1
     bot.reply_to(
         message,
-        " ¡Has comprado y activado un **escudo protector**!\nAhora eres inmune a las pociones venenosas.",
+        f" ¡Has comprado y activado un **escudo protector**!\nAhora eres inmune a las pociones venenosas.\nUsos hoy: {usos + 1}/1",
         parse_mode="Markdown",
     )
 
   elif item == "milagrosa":
-    cost = 100
+    cost = 500
+    usos = user_data.get('shop_milagrosa_uses', 0)
+    if usos >= 3:
+      bot.reply_to(message, "ㅤ⬚  ya has usado la poción milagrosa 3 veces hoy. ¡Vuelve mañana!  ،͟,")
+      return
     if balance < cost:
-      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 100 ).  ،͟,")
+      bot.reply_to(message, "ㅤ⬚  no tienes suficientes caramelos (Costo: 500 ).  ،͟,")
       return
     db['users'][clean_user]['caramelos'] -= cost
     if db['users'][clean_user]['caramelos'] < 0:
@@ -1649,9 +1699,10 @@ def cmd_buy(message):
     if user_id not in inventario:
       inventario[user_id] = {}
     inventario[user_id]["poción_milagrosa"] = inventario[user_id].get("poción_milagrosa", 0) + 1
+    db['users'][clean_user]['shop_milagrosa_uses'] = usos + 1
     bot.reply_to(
         message,
-        " ¡Has comprado una **poción milagrosa**!\n Usala respondiendo con `/milagrosa @usuario` para robar caramelos.",
+        f" ¡Has comprado una **poción milagrosa**!\n Usala respondiendo con `/milagrosa @usuario` para robar caramelos.\nUsos hoy: {usos + 1}/3",
         parse_mode="Markdown",
     )
 
@@ -1663,7 +1714,7 @@ def cmd_buy(message):
 
 
 # ==========================================
-# === COMANDOS DE POCIONES: ITEMS, ENVENEWAR Y MILAGROSA ===
+# === COMANDOS DE POCIONES: ITEMS, ENVENENAR Y MILAGROSA ===
 # ==========================================
 
 @bot.message_handler(commands=["items"])
@@ -1686,6 +1737,11 @@ def ver_inventario(message):
 @bot.message_handler(commands=["envenenar"])
 def envenenar_usuario(message):
   user_id = message.from_user.id
+  clicker = message.from_user.username
+  if not clicker:
+    return bot.reply_to(message, "ㅤ⬚  necesitas un @username en Telegram.  ،͟,")
+  clean_user = sanitize_username(clicker)
+  init_shop_daily(clean_user, user_id)
 
   if inventario.get(user_id, {}).get("pocion_venenosa", 0) <= 0:
     bot.reply_to(
@@ -1739,6 +1795,12 @@ def envenenar_usuario(message):
 @bot.message_handler(commands=["milagrosa"])
 def milagrosa_usuario(message):
   user_id = message.from_user.id
+  clicker = message.from_user.username
+  if not clicker:
+    return bot.reply_to(message, "ㅤ⬚  necesitas un @username en Telegram.  ،͟,")
+  clean_user = sanitize_username(clicker)
+  init_shop_daily(clean_user, user_id)
+
   if inventario.get(user_id, {}).get("poción_milagrosa", 0) <= 0:
     return bot.reply_to(message, "❌ No tienes pociones milagrosas. ¡Cómprala en /shop!")
 
@@ -1751,7 +1813,7 @@ def milagrosa_usuario(message):
     return bot.reply_to(message, "❌ El usuario objetivo no existe.")
 
   inventario[user_id]["poción_milagrosa"] -= 1
-  robado = random.randint(0, 200)
+  robado = random.randint(0, 500)
   
   if db['users'][objetivo]['caramelos'] < robado:
     robado = db['users'][objetivo]['caramelos']
@@ -1760,8 +1822,6 @@ def milagrosa_usuario(message):
   if db['users'][objetivo]['caramelos'] < 0:
     db['users'][objetivo]['caramelos'] = 0
     
-  clean_user = sanitize_username(message.from_user.username)
-  init_user(clean_user, message.from_user.id)
   db['users'][clean_user]['caramelos'] += robado
   if db['users'][clean_user]['caramelos'] < 0:
     db['users'][clean_user]['caramelos'] = 0
@@ -1982,6 +2042,8 @@ pumpkin_data = {
     'participants': {},
     'total_pot': 0,
     'winner': None,
+    'winner_username': None,
+    'winner_prize': 0,
 }
 
 
@@ -2000,6 +2062,8 @@ def start_pumpkin(message):
   pumpkin_data['participants'] = {}
   pumpkin_data['total_pot'] = cortesia
   pumpkin_data['winner'] = None
+  pumpkin_data['winner_username'] = None
+  pumpkin_data['winner_prize'] = 0
 
   text = (
       'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
@@ -2035,7 +2099,6 @@ def hacer_pozo(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user)
 
-  # Validación de Fondos para aportar al pozo
   if db['users'][clean_user]['caramelos'] < aporte:
     return bot.reply_to(message, 'ㅤ⬚  no tienes suficientes caramelos  ،͟,')
 
@@ -2066,24 +2129,25 @@ def hacer_pozo(message):
   bot.reply_to(message, text)
 
 
-@bot.message_handler(commands=['winner', 'newinner'])
+@bot.message_handler(commands=['winner'])
 def revelar_ganador(message):
   if not check_admin(message):
     return
   if not pumpkin_data['active'] or not pumpkin_data['participants']:
     return bot.reply_to(
-        message, 'No hay participantes in la calabaza o no está activa.'
+        message, 'No hay participantes en la calabaza o no está activa.'
     )
 
   ganador_user_key = random.choice(list(pumpkin_data['participants'].keys()))
   ganador_info = pumpkin_data['participants'][ganador_user_key]
   pumpkin_data['winner'] = ganador_info
+  pumpkin_data['winner_username'] = ganador_user_key
+  pumpkin_data['winner_prize'] = pumpkin_data['total_pot']
 
   db['users'][ganador_user_key]['caramelos'] += pumpkin_data['total_pot']
   if db['users'][ganador_user_key]['caramelos'] < 0:
     db['users'][ganador_user_key]['caramelos'] = 0
   
-  # 🎃 Desactivamos la dinámica aquí
   pumpkin_data['active'] = False
 
   text = (
@@ -2093,6 +2157,52 @@ def revelar_ganador(message):
       f"{ganador_info['mention']} ¡𝖿𝖾𝗅𝗂𝖼𝗂𝖽𝖺𝖽𝖾𝗌! \n"
       'ㅤㅤ𝖺𝗁𝗈𝗋𝖺 𝖾𝗋𝖾𝗌 𝖽𝗎𝖾ñ𝗈 𝖽𝖾 '
       f"{pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌."
+  )
+  bot.send_message(message.chat.id, text)
+
+
+@bot.message_handler(commands=['newinner'])
+def nuevo_ganador(message):
+  if not check_admin(message):
+    return
+  if pumpkin_data['winner_username'] is None:
+    return bot.reply_to(
+        message, 'No hay un ganador previo para reemplazar. Usa /winner primero.'
+    )
+  if not pumpkin_data['participants']:
+    return bot.reply_to(
+        message, 'No hay participantes en la calabaza.'
+    )
+
+  # Quitar el premio al ganador anterior
+  old_winner = pumpkin_data['winner_username']
+  old_prize = pumpkin_data['winner_prize']
+  db['users'][old_winner]['caramelos'] -= old_prize
+  if db['users'][old_winner]['caramelos'] < 0:
+    db['users'][old_winner]['caramelos'] = 0
+
+  # Elegir nuevo ganador aleatorio
+  participantes = list(pumpkin_data['participants'].keys())
+  # Evitar que el nuevo ganador sea el mismo que el anterior si hay más de uno
+  if len(participantes) > 1:
+    participantes.remove(old_winner)
+  nuevo_ganador_key = random.choice(participantes)
+  nuevo_ganador_info = pumpkin_data['participants'][nuevo_ganador_key]
+
+  # Entregar el premio al nuevo ganador
+  db['users'][nuevo_ganador_key]['caramelos'] += old_prize
+  if db['users'][nuevo_ganador_key]['caramelos'] < 0:
+    db['users'][nuevo_ganador_key]['caramelos'] = 0
+
+  pumpkin_data['winner'] = nuevo_ganador_info
+  pumpkin_data['winner_username'] = nuevo_ganador_key
+
+  text = (
+      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
+      'ㅤㅤ¡𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝗁𝖺 𝗌𝗂𝖽𝗈 𝗋𝖾𝗏𝗈𝗅𝗍𝖾𝖺𝖽𝖺! 𝖾𝗅 𝗇𝗎𝖾𝗏𝗈 𝗀𝖺𝗇𝖺𝖽𝗈𝗋 𝖾𝗌 '
+      f"{nuevo_ganador_info['mention']} ¡𝖿𝖾𝗅𝗂𝖼𝗂𝖽𝖺𝖽𝖾𝗌! \n"
+      'ㅤㅤ𝖺𝗁𝗈𝗋𝖺 𝖾𝗋𝖾𝗌 𝖽𝗎𝖾ñ𝗈 𝖽𝖾 '
+      f"{old_prize} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌."
   )
   bot.send_message(message.chat.id, text)
 
