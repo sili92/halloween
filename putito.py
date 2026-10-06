@@ -72,7 +72,7 @@ WITCH_TYPES = {
         ),
         'caughtCaption': lambda user: (
             f'ㅤ ￤ ꜥꜤ ㅤㅤ𝗅𝖺 𝖻𝗋𝗎𝗃𝖺 𝖿𝗎𝖾 𝖼𝖺𝗓𝖺𝖽𝖺 𝗉𝗈𝗋 @{user}\nㅤㅤㅤ𝗒'
-            ' 𝗈𝖻𝗍𝗎𝗏𝗈 80 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌. ¡𝖻𝗂𝖾𝗇 𝗁ec𝗁𝗈!'
+            ' 𝗈𝖻𝗍𝗎𝗏𝗈 80 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌. ¡𝖻𝗂𝖾𝗇 𝗁𝖾c𝗁𝗈!'
         ),
     },
     'piromantica': {
@@ -228,15 +228,22 @@ def is_banned(username):
   return False
 
 
-def check_poisoned(user_id):
-  if user_id not in inventario:
-    return False
-  veneno_until = inventario[user_id].get("veneno_until")
-  if not veneno_until:
-    return False
-  if datetime.datetime.now() < veneno_until:
-    return True
-  inventario[user_id]["veneno_until"] = None
+def check_poisoned(user_id, username=None):
+  if user_id in inventario:
+    veneno_until = inventario[user_id].get("veneno_until")
+    if veneno_until and datetime.datetime.now() < veneno_until:
+      return True
+    elif veneno_until:
+      inventario[user_id]["veneno_until"] = None
+      
+  if username:
+    clean_user = sanitize_username(username)
+    if 'poisoned_usernames' in db and clean_user in db['poisoned_usernames']:
+      veneno_until = db['poisoned_usernames'][clean_user]
+      if datetime.datetime.now() < veneno_until:
+        return True
+      else:
+        db['poisoned_usernames'][clean_user] = None
   return False
 
 
@@ -805,7 +812,7 @@ def cmd_batghost(message):
   clean_clicker = sanitize_username(clicker)
   init_bg_user(clean_clicker, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   is_suprema = clean_clicker.lower() == ADMIN_USERNAME.lower()
@@ -846,7 +853,7 @@ def handle_batghost_text_choice(message):
     return bot.reply_to(message, 'ㅤ⬚  estás sancionado.  ،͟,')
   init_bg_user(clean_clicker, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   is_suprema = clean_clicker.lower() == ADMIN_USERNAME.lower()
@@ -1120,7 +1127,7 @@ def cmd_pennywise(message):
   clean_user = sanitize_username(clicker)
   init_game_users(clean_user, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   args = message.text.split()[1:]
@@ -1237,7 +1244,7 @@ def handle_penny_pinch(call):
       f'ㅤㅤ𝗉𝗂𝗇𝖼𝗁𝖺𝗓𝗈𝗌: {pins_str}\n'
       f"ㅤㅤ𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌: {game_state['profit']}\n\n"
       'ㅤㅤㅤ𝗎𝗌𝖺 /leave 𝖼𝗎𝖺𝗇𝖽𝗈 𝗊𝗎𝗂𝖾𝗋𝖺𝗌 𝗋𝖾𝗍𝗂𝗋𝖺𝗋 𝗍𝗎𝗌 𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌.\n'
-      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
+      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻otó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
   )
   bot.send_message(call.message.chat.id, text, reply_markup=markup)
 
@@ -1285,7 +1292,7 @@ def start_blackjack(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   balance = db['users'][clean_user]['caramelos']
@@ -1323,7 +1330,7 @@ def blackjack_pedir(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   user = db['users'][clean_user]
@@ -1447,7 +1454,7 @@ def start_coraline(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   today = get_today_str_ve()
@@ -1726,10 +1733,10 @@ def envenenar_usuario(message):
     if objetivo_id not in inventario:
       inventario[objetivo_id] = {}
     inventario[objetivo_id]["veneno_until"] = datetime.datetime.now() + datetime.timedelta(hours=4)
-  else:
-    if 'poisoned_usernames' not in db:
-      db['poisoned_usernames'] = {}
-    db['poisoned_usernames'][objetivo_username] = datetime.datetime.now() + datetime.timedelta(hours=4)
+  
+  if 'poisoned_usernames' not in db:
+    db['poisoned_usernames'] = {}
+  db['poisoned_usernames'][objetivo_username] = datetime.datetime.now() + datetime.timedelta(hours=4)
 
   bot.reply_to(
       message, f"🧪 ¡Has utilizado una poción venenosa contra @{objetivo_username} que dura 4 horas!"
@@ -1781,7 +1788,7 @@ def cmd_ojos(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   args = message.text.split()
@@ -1854,7 +1861,7 @@ def handle_eye_callback(call):
       db['users'][clean_user]['caramelos'] = 0
     text = (
         ' ㅤ꒰ 👁️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖺𝖼𝖾𝗋𝗍𝖺𝖽𝗈! 𝖾𝗅 𝗈𝗃𝗈 #'
-        f'{winning_pos + 1} 𝗍𝖾 𝗆𝗂𝗋𝖺𝖻𝖺.ㅤㅤㅤㅤㅤㅤ\n'
+        f'{winning_pos + 1} 𝗍𝖾 𝗆𝗂𝗋𝖺𝟻𝖺.ㅤㅤㅤㅤㅤㅤ\n'
         ' ㅤ ㅤㅤ  ㅤ ㅤㅤ  '
         f'𝗀𝖺𝗇𝖺𝗌𝗍𝖾 {ganancia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.'
     )
@@ -1863,7 +1870,7 @@ def handle_eye_callback(call):
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     text = (
-        ' ㅤ꒰ 👁️️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
+        ' ㅤ꒰ 👁 ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
         f'ㅤ𝗇ú𝗆𝖾𝗋𝗈 #{chosen_pos + 1}, 𝗉𝖾𝗋𝗈 𝖾𝗅 𝗊𝗎𝖾 𝗍𝖾 𝗆𝗂𝗋𝖺𝖻𝖺 𝖾𝗋𝖺 𝖾𝗅 𝗈𝗃𝗈 #'
         f'{winning_pos + 1}.\n'
         'ㅤㅤㅤㅤㅤㅤㅤ'
@@ -1888,7 +1895,7 @@ def cmd_slotween(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user, message.from_user.id)
 
-  if check_poisoned(message.from_user.id):
+  if check_poisoned(message.from_user.id, clicker):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
   args = message.text.split()
@@ -1952,7 +1959,7 @@ def handle_slot_spin(call):
 
   init_user(clean_clicker, call.from_user.id)
   if won:
-    db['users'][clean_clicker]['caramelos'] += ganancia
+    db['users'][clean_user]['caramelos'] += ganancia
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     resultado_txt = f"¡𝗏𝗂𝖼𝗍𝗈𝗋𝗂𝖺! Has ganado {ganancia} caramelos 🍬."
@@ -1963,7 +1970,7 @@ def handle_slot_spin(call):
     resultado_txt = f"No hubo suerte esta vez. Perdiste {bet} caramelos."
 
   text = (
-      "ㅤㅤ ⃟ ㅤㅤ𝓥𝖺𝗆𝗉'𝗌 𝗌𝗅𝗈𝗍 𝗆𝖺𝖼𝗁𝗂𝗇𝖾!ㅤㅤㅤㅤㅤㅤ\n\n"
+      "ㅤㅤ ⃟ ㅤㅤ𝓥𝖺𝗆𝗉'𝗌 𝗌𝗅𝗈𝗍 𝗆𝖺𝗼𝗂𝗇𝖾!ㅤㅤㅤㅤㅤㅤ\n\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[0][0]} | {grid[0][1]} | {grid[0][2]}\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[1][0]} | {grid[1][1]} | {grid[1][2]}\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[2][0]} | {grid[2][1]} | {grid[2][2]}\n\n"
