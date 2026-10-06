@@ -2001,14 +2001,19 @@ def start_pumpkin(message):
   pumpkin_data['total_pot'] = cortesia
   pumpkin_data['winner'] = None
 
-  pumpkin_data['active'] = False
-
   text = (
       'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
-      'ㅤㅤ¡La Golden Pumpkin ha sido configurada con éxito!\n'
-      f'ㅤㅤAporte mínimo inicial: {cortesia} caramelos.'
+      'ㅤㅤ𝗁𝖺𝗒 𝗎𝗇𝖺 𝖻𝗋𝗂𝗅𝗅𝖺𝗇𝗍𝖾 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗌𝗉𝖾𝗋𝖺𝗇𝖽𝗈 𝗌𝖾𝗋 𝗅𝗅𝖾𝗇𝖺𝖽𝖺...\n'
+      f'    𝗌𝗎 𝖺𝖽𝗆𝗂𝗇 𝗅𝖾𝗌 𝗁𝖺 𝖺𝗉𝗈𝗋𝗍𝖺𝖽𝗈 {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
+      'ㅤㅤ𝗎𝗌𝖾𝗇 /pozo + 𝖼𝖺𝗇𝗍𝗂𝖽𝖺𝖽 𝘱𝖺𝗋𝖺 𝖽𝖺𝗋 𝗌𝗎 𝖺𝗉𝗈𝗋𝗍𝖾\n'
+      'ㅤㅤ𝗒 𝗍𝖾𝗇𝖾𝗋 𝗈𝗉𝗈𝗋𝗍𝗎𝗇𝗂𝖽𝖺𝖽 𝖽𝖾 𝗀𝖺𝗇𝖺𝗋.\n\n'
+      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝖽𝖾𝗅 𝖺𝖽𝗆𝗂𝗇: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
+      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝗆í𝗇𝗂𝗆𝗈: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n\n'
+      'ㅤㅤ𝖺𝖽𝗆𝗂𝗇, 𝗎𝗌𝖺 /winner 𝗉𝖺𝗋𝖺 𝗋𝖾𝗏𝖾𝗅𝖺𝗋 𝖺𝗅 𝗀𝖺𝗇𝖺𝖽𝗈𝗋 𝖽𝖾\n'
+      'ㅤㅤㅤㅤㅤㅤㅤㅤ 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖽𝗈𝗋𝖺𝖽𝖺.'
   )
   bot.send_message(message.chat.id, text)
+
 
 @bot.message_handler(commands=['pozo'])
 def hacer_pozo(message):
@@ -2030,6 +2035,7 @@ def hacer_pozo(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user)
 
+  # Validación de Fondos para aportar al pozo
   if db['users'][clean_user]['caramelos'] < aporte:
     return bot.reply_to(message, 'ㅤ⬚  no tienes suficientes caramelos  ،͟,')
 
@@ -2052,11 +2058,44 @@ def hacer_pozo(message):
   pumpkin_data['total_pot'] += aporte
 
   text = (
-      f"ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n"
-      f"ㅤㅤ¡Has aportado {aporte} caramelos al pozo!\n"
-      f"ㅤㅤEl pozo total actual es de: {pumpkin_data['total_pot']} caramelos."
+      f'⸜(*ˊᗜˋ*)⸝ㅤ𝗒𝖺𝗒! {user_mention} 𝗀𝗎𝖺𝗋𝖽ó {aporte} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺'
+      ' 𝖼𝖺𝗅𝖺𝖻𝖺𝖼𝗂𝗍𝖺.\n'
+      f"𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺: {pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n"
+      '¿𝖺𝗅𝗀𝗎𝗂𝖾𝗇 𝗆á𝗌?'
   )
   bot.reply_to(message, text)
+
+
+@bot.message_handler(commands=['winner', 'newinner'])
+def revelar_ganador(message):
+  if not check_admin(message):
+    return
+  if not pumpkin_data['active'] or not pumpkin_data['participants']:
+    return bot.reply_to(
+        message, 'No hay participantes in la calabaza o no está activa.'
+    )
+
+  ganador_user_key = random.choice(list(pumpkin_data['participants'].keys()))
+  ganador_info = pumpkin_data['participants'][ganador_user_key]
+  pumpkin_data['winner'] = ganador_info
+
+  db['users'][ganador_user_key]['caramelos'] += pumpkin_data['total_pot']
+  if db['users'][ganador_user_key]['caramelos'] < 0:
+    db['users'][ganador_user_key]['caramelos'] = 0
+  
+  # 🎃 Desactivamos la dinámica aquí
+  pumpkin_data['active'] = False
+
+  text = (
+      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
+      'ㅤㅤ¡𝗍𝖾𝗇𝖾𝗆𝗈𝗌 𝖺 𝗎𝗇 𝗀𝖺𝗇𝖺𝖽𝗈𝗋! 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗅𝗂𝗀𝗂ó 𝗌𝗎 \n'
+      'ㅤㅤ𝖽𝖾𝗌𝗍𝗂𝗇𝗈 𝗒 𝗊𝗎𝖾𝖽ó 𝖾𝗇 𝗆𝖺𝗇𝗈𝗌 𝖽𝖾 '
+      f"{ganador_info['mention']} ¡𝖿𝖾𝗅𝗂𝖼𝗂𝖽𝖺𝖽𝖾𝗌! \n"
+      'ㅤㅤ𝖺𝗁𝗈𝗋𝖺 𝖾𝗋𝖾𝗌 𝖽𝗎𝖾ñ𝗈 𝖽𝖾 '
+      f"{pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌."
+  )
+  bot.send_message(message.chat.id, text)
+
 
 # ID de la Administradora Suprema (reemplázalo por tu ID numérico real de Telegram)
 SUPER_ADMIN_ID = 5398217730
