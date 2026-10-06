@@ -311,6 +311,51 @@ def init_bg_user(username, user_id=None):
 # === COMANDOS DE ADMINISTRACIÓN DE CAZA ===
 # ==========================================
 
+@bot.message_handler(commands=['comandos'])
+def cmd_comandos(message):
+  if not check_admin(message):
+    return
+  text = (
+      "⚡ **LISTA DE TODOS LOS COMANDOS DE ADMINISTRACIÓN Y JUEGO** ⚡\n\n"
+      "👑 **Administración (Solo Admin Suprema):**\n"
+      "• `/starthunt` - Inicia la jornada de caza seleccionando grupo.\n"
+      "• `/endhunt` - Finaliza la jornada de caza activa.\n"
+      "• `/witch` (o `/bruja`) - Envía una bruja al grupo activo.\n"
+      "• `/types` - Muestra la lista de tipos de brujas.\n"
+      "• `/byewitch` (o `/cancel`) - Cancela la bruja activa.\n"
+      "• `/give` - Añade caramelos a un usuario.\n"
+      "• `/rest` - Resta caramelos a un usuario.\n"
+      "• `/ban` - Sanciona temporalmente a un usuario.\n"
+      "• `/topevent` - Muestra el top 20 de cazadores.\n"
+      "• `/see` - Consulta los caramelos de un usuario.\n"
+      "• `/chance` - Otorga intentos extra para Bat or Ghost.\n"
+      "• `/graves` - Configura los valores de las tumbas.\n"
+      "• `/extra` - Da partidas extra de Pennywise.\n"
+      "• `/jack` - Da intentos extra de Blackjack.\n"
+      "• `/comandos` - Muestra este panel de comandos.\n\n"
+      "🎃 **Comandos de Usuario / Juegos:**\n"
+      "• `/start` - Mensaje de bienvenida.\n"
+      "• `/games` - Muestra el menú de juegos.\n"
+      "• `/calabaza` - Consulta tus caramelos.\n"
+      "• `/batghost` - Juega Bat or Ghost.\n"
+      "• `/cementerio` - Abre una tumba del cementerio diario.\n"
+      "• `/pennywise` - Juega al globo de Pennywise.\n"
+      "• `/leave` - Retira tus ganancias en Pennywise.\n"
+      "• `/blackjack` - Juega al blackjack de terror.\n"
+      "• `/pedir` - Pide una carta adicional en blackjack.\n"
+      "• `/retirarme` (o `/retirar`) - Cierra tu mano de blackjack.\n"
+      "• `/coraline` - Juega con las puertas secretas de Coraline (máximo 3 veces al día).\n"
+      "• `/shop` - Tienda de pociones y objetos mágicos.\n"
+      "• `/buy` - Compra un artículo de la tienda.\n"
+      "• `/items` - Consulta tu inventario de objetos.\n"
+      "• `/envenenar` - Usa una poción venenosa contra otro jugador.\n"
+      "• `/milagrosa` - Usa una poción milagrosa para robar caramelos.\n"
+      "• `/ojos` - Juega al juego de los ojos.\n"
+      "• `/slotween` - Juega a la tragamonedas de Halloween."
+  )
+  bot.send_message(message.chat.id, text, parse_mode="Markdown")
+
+
 @bot.message_handler(commands=['starthunt'])
 def cmd_starthunt(message):
   if not check_admin(message):
@@ -661,9 +706,9 @@ def send_start(message):
     init_user(message.from_user.username, message.from_user.id)
     text = (
         "⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿\x7f⠀ ¡𝗁𝗈𝗅𝖺, 𝗃𝗎𝗀𝖺𝖽𝗈𝗋! \n"
-        "⠀⠀⠀⠀⣰⣿\x7f⢻⣿\x7f⢻\x7f     𝗈𝖿𝗂𝖼𝗂𝖺𝗅𝗆𝖾𝗇𝗍𝖾 𝖿𝗈𝗋𝗆𝖺𝗌 𝘱𝖺𝗋𝗍𝖾 𝖽𝖾 𝗅𝖺 \n"
-        "⠀⠀⠀⣰⣿⣿\\\x7f\x7f\x7f     𝖼𝖺𝗌𝖺 𝖽𝖾𝗅 𝗍𝖾𝗋𝗋𝗈𝗋 𝖽𝖾 𝖼𝗁𝖾𝗋𝗋𝗒'𝗌. \n"
-        "⠀⠀⣴⣿⣿⣿⣿\x7f⢻⣿⣿⣿    𝗍𝖾 𝖽𝖾𝗌𝖾𝗈 𝗆𝗎𝖼𝗁𝖺 𝗌𝗎𝖾𝗋𝗍𝖾 𝗒... \n"
+        "⠀⠀⠀⠀\⣿\x7f⢻⣿\x7f⢻\x7f     𝗈𝖿𝗂𝖼𝗂𝖺𝗅𝗆𝖾𝗇𝗍𝖾 𝖿𝗈𝗋𝗆𝖺𝗌 𝘱𝖺𝗋𝗍𝖾 𝖽𝖾 𝗅𝖺 \n"
+        "⠀⠀⠀\⣿⣿\\\x7f\x7f\x7f     𝖼𝖺𝗌𝖺 𝖽𝖾𝗅 𝗍𝖾𝗋𝗋𝗈𝗋 𝖽𝖾 𝖼𝗁𝖾𝗋𝗋𝗒'𝗌. \n"
+        "⠀⠀\⣿⣿⣿⣿\x7f⢻⣿⣿⣿    𝗍𝖾 𝖽𝖾𝗌𝖾𝗈 𝗆𝗎𝖼𝗁𝖺 𝗌𝗎𝖾𝗋𝗍𝖾 𝗒... \n"
         "⣠⣾⣿⣿⣿⣿⣿⣤\x7f\x7f    𝗉𝖺𝖼𝗂𝖾𝗇𝖼𝗂𝖺, 𝗍𝖺𝗆𝖻𝗂é𝗇. \n"
         "⢿\x7f⢿⣿⣿⣿⣿⣿⣿⣿\x7f⠀𝗌𝗈𝗒 𝗊𝗎𝗂é𝗇 𝗍𝖾 𝖺𝗒𝗎𝖽𝖺𝗋á 𝖺\n"
         "⠀⠀⠈⠿⠿\x7f⠙⢿⣿\\\x7f⠀  𝗅𝗅𝖾𝗀𝖺𝗋 𝖺𝗅 𝗍𝗈𝗉 1 𝖽𝖾𝗅 𝖾𝗏𝖾𝗇𝗍𝗈,\n"
@@ -699,23 +744,6 @@ def send_games(message):
 
 @bot.message_handler(commands=['calabaza'])
 def cmd_calabaza(message):
-  args = message.text.split()[1:]
-  
-  if args:
-    target_user = sanitize_username(args[0])
-    if not target_user:
-      return bot.reply_to(message, 'ㅤ⬚  formato incorrecto. uso: /calabaza @usuario  ،͟,')
-    init_user(target_user)
-    total_caramelos = db['users'][target_user]['caramelos']
-    text = (
-        f'ㅤㅤㅤㅤㅤ༉‧ ⃟     ㅤㅤhi, player! (@{target_user})ㅤㅤㅤ 🎃 ㅤㅤㅤㅤㅤㅤ\n'
-        'ㅤㅤㅤha consultado su calabaza de dulces, \n'
-        'ㅤㅤㅤla cual puede llenar jugando diversas\n'
-        'ㅤㅤㅤㅤㅤㅤ dinámicas en el canal.\n'
-        f'ㅤㅤㅤㅤsu total es de: {total_caramelos} caramelos.'
-    )
-    return bot.send_message(message.chat.id, text)
-
   clicker = message.from_user.username
   if not clicker:
     return bot.reply_to(
@@ -1209,7 +1237,7 @@ def handle_penny_pinch(call):
       f'ㅤㅤ𝗉𝗂𝗇𝖼𝗁𝖺𝗓𝗈𝗌: {pins_str}\n'
       f"ㅤㅤ𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌: {game_state['profit']}\n\n"
       'ㅤㅤㅤ𝗎𝗌𝖺 /leave 𝖼𝗎𝖺𝗇𝖽𝗈 𝗊𝗎𝗂𝖾𝗋𝖺𝗌 𝗋𝖾𝗍𝗂𝗋𝖺𝗋 𝗍𝗎𝗌 𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌.\n'
-      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝗀}𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
+      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
   )
   bot.send_message(call.message.chat.id, text, reply_markup=markup)
 
@@ -1282,7 +1310,7 @@ def start_blackjack(message):
       'ㅤㅤㅤ𝖽𝖾𝖻𝖾𝗌 𝗉𝖾𝖽𝗂𝗋 𝗁𝖺𝗌𝗍𝖺 𝗅𝗅𝖾𝗀𝖺𝗋 𝖺 21 𝘱𝖺𝗋𝖺 𝖺𝗌í \n'
       'ㅤㅤㅤ𝗀𝖺𝗇𝖺𝗋, 𝗉𝖾𝗋𝗈, ¡𝗍𝖾𝗇 𝖼𝗎𝗂𝖽𝖺𝖽𝗈! 𝗌𝗂 𝗍𝖾 𝗉𝖺𝗌𝖺𝗌, \n'
       'ㅤㅤㅤ𝗏𝖺𝗆𝗉 𝗇𝗈 𝗍𝖾𝗇𝖽𝗋á 𝘱𝗂𝖾𝖽𝖺𝖽 𝖼𝗈𝗇𝗍𝗂𝗀𝗈.\n\n'
-      ' 𝗎𝗌𝖺 /pedir 𝗉𝖺𝗋𝖺 𝗌𝗎𝗆𝖺𝗋 𝗒 /retirarme 𝖼𝗎𝖺𝗇𝖽𝗈 𝗊𝗎𝗂𝖾𝗋𝖺𝗌 𝖼𝖾𝗋𝗋𝖺𝗋.'
+      ' 𝗎𝗌𝖺 /pedir 𝗉𝖺𝗋𝖺 𝗌𝗎𝗆𝖺𝗋 𝗒 /retirarme 𝗼𝗎𝗂𝖾𝗋𝖺𝗌 𝖼𝖾𝗋𝗋𝖺𝗋.'
   )
   bot.reply_to(message, text)
 
@@ -1315,15 +1343,15 @@ def blackjack_pedir(message):
   if total > 21:
     user['blackjack']['active'] = False
     text = (
-        'ㅤ┊ 🃏 ┆ㅤ𝗏𝖺𝗆𝗉 𝗌𝖺𝖼𝖺 𝗎𝗇𝖺 𝖼𝖺𝗋𝗍𝖺 𝖽𝖾𝗅 𝗆𝖺𝗓𝗈 𝗉𝖺𝗋𝖺'
+        'ㅤ┊ 🃏 ┆ㅤ𝗏𝖺𝗆𝗉 𝗌𝖺𝖼𝖺 𝗎𝗇𝖺 𝖼𝖺𝗋𝗍𝖺 𝖽𝖾𝗅 𝗆𝖺𝗓𝗈 𝘱𝖺𝗋𝖺'
         ' 𝗍í.ㅤㅤㅤㅤㅤㅤ\n\n'
         f'ㅤ  ⎯ ㅤㅤ𝗍𝖾 𝗁𝖺 𝖽𝖺𝖽𝗈: {card_str} \n'
         f'ㅤ  ⎯ ㅤㅤ𝗍𝗂𝖾𝗇𝖾𝗌: {total}\n'
-        '¡𝗈𝗈𝗉𝗌! 𝗍𝖾 𝗉𝖺𝗌𝖺𝗌𝗍𝖾 𝖽𝖾 21. 𝗌𝗎𝖾𝗋𝗍𝖾 𝗉𝖺𝗋𝖺 𝗅𝖺 𝗉𝗋ó𝗑𝗂𝗆𝖺.'
+        '¡𝗈𝗈𝗉𝗌! 𝗍𝖾 𝗉𝖺𝗌𝖺𝗌𝗍𝖾 𝖽𝖾 21. 𝗌𝗎𝖾𝗋𝗍𝖾 𝘱𝖺𝗋𝖺 𝗅𝖺 𝗉𝗋ó𝗑𝗂𝗆𝖺.'
     )
   else:
     text = (
-        'ㅤ┊ 🃏 ┆ㅤ𝗏𝖺𝗆𝗉 𝗌𝖺𝖼𝖺 𝗎𝗇𝖺 𝖼𝖺𝗋𝗍𝖺 𝖽𝖾𝗅 𝗆𝖺𝗓𝗈 𝗉𝖺𝗋𝖺'
+        'ㅤ┊ 🃏 ┆ㅤ𝗏𝖺𝗆𝗉 𝗌𝖺𝖼𝖺 𝗎𝗇𝖺 𝖼𝖺𝗋𝗍𝖺 𝖽𝖾𝗅 𝗆𝖺𝗓𝗈 𝘱𝖺𝗋𝖺'
         ' 𝗍í.ㅤㅤㅤㅤㅤㅤ\n\n'
         f'ㅤ  ⎯ ㅤㅤ𝗍𝖾 𝗁𝖺 𝖽𝖺𝖽𝗈: {card_str} \n'
         f'ㅤ  ⎯ ㅤㅤ𝗍𝗂𝖾𝗇𝖾𝗌: {total}\n'
@@ -1364,7 +1392,7 @@ def blackjack_retirar(message):
         'ㅤㅤ┊ 🃏 ┆ㅤ𝗏𝖺𝗆𝗉 𝖼𝗎𝖾𝗇𝗍𝖺 𝗍𝗎𝗌 𝖼𝖺𝗋𝗍𝖺𝗌...ㅤㅤㅤㅤㅤㅤ\n'
         'ㅤㅤㅤㅤㅤㅤㅤ𝗍𝗂𝖾𝗇𝖾𝗌... 20 𝖼𝖺𝗋𝗍𝖺𝗌.\n\n'
         'ㅤㅤ𝗇𝗈 𝖾𝗌 𝗅𝗈 𝗊𝗎𝖾 𝗉𝗂𝖽𝗂ó, 𝗉𝖾𝗋𝗈 𝗍𝖾 𝖼𝖾𝖽𝖾 150 \n'
-        'ㅤㅤㅤㅤ𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝗉𝗈𝗋 𝗍𝗎 𝖾𝗌𝖿𝗎𝖾𝗋𝗓𝗈.'
+        'ㅤㅤㅤㅤ𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝘱𝖺𝗋𝖺 𝗍𝗎 𝖾𝗌𝖿𝗎𝖾𝗋𝗓𝗈.'
     )
   else:
     text = (
@@ -1422,12 +1450,17 @@ def start_coraline(message):
   if check_poisoned(message.from_user.id):
     return bot.reply_to(message, "❌ Estás envenenado y no puedes jugar. Solo puedes usar /cementerio.")
 
-  if db['users'][clean_user]['coraline_attempts'] <= 0:
+  today = get_today_str_ve()
+  if 'coraline_date' not in db['users'][clean_user] or db['users'][clean_user]['coraline_date'] != today:
+    db['users'][clean_user]['coraline_date'] = today
+    db['users'][clean_user]['coraline_daily_uses'] = 0
+
+  if db['users'][clean_user]['coraline_daily_uses'] >= 3:
     return bot.reply_to(
-        message, 'Te has quedado sin intentos para el juego de Coraline hoy.'
+        message, 'ㅤ⬚  has alcanzado el límite de 3 usos diarios para el juego de Coraline. ¡Vuelve mañana!  ،͟,'
     )
 
-  db['users'][clean_user]['coraline_attempts'] -= 3
+  db['users'][clean_user]['coraline_daily_uses'] += 1
 
   text = (
       'ㅤㅤㅤ - ̗̀ㅤ  🚪   ̖́-ㅤㅤ¡𝗁𝗈𝗅𝖺 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈!ㅤㅤㅤㅤㅤㅤㅤㅤ\n\n'
@@ -1830,7 +1863,7 @@ def handle_eye_callback(call):
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     text = (
-        ' ㅤ꒰ 👁️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
+        ' ㅤ꒰ 👁️️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
         f'ㅤ𝗇ú𝗆𝖾𝗋𝗈 #{chosen_pos + 1}, 𝗉𝖾𝗋𝗈 𝖾𝗅 𝗊𝗎𝖾 𝗍𝖾 𝗆𝗂𝗋𝖺𝖻𝖺 𝖾𝗋𝖺 𝖾𝗅 𝗈𝗃𝗈 #'
         f'{winning_pos + 1}.\n'
         'ㅤㅤㅤㅤㅤㅤㅤ'
@@ -1934,137 +1967,13 @@ def handle_slot_spin(call):
       f"ㅤㅤㅤㅤㅤㅤ {grid[0][0]} | {grid[0][1]} | {grid[0][2]}\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[1][0]} | {grid[1][1]} | {grid[1][2]}\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[2][0]} | {grid[2][1]} | {grid[2][2]}\n\n"
-      f"ㅤㅤ𝖺𝗉𝗎𝖾𝗌𝗍𝖺: {bet} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌. \n"
+      f"ㅤㅤapuesta: {bet} caramelos.\n"
       f"ㅤㅤ{resultado_txt}"
   )
   try:
-    bot.edit_message_text(text, call.message.chat.id, call.message.message_id, reply_markup=None)
+    bot.edit_message_text(text, call.message.chat.id, call.message.message_id)
   except Exception:
     pass
 
-# ==========================================
-# === DINÁMICA: GOLDEN PUMPKIN ===
-# ==========================================
-pumpkin_data = {
-    'active': False,
-    'admin_courtesy': 0,
-    'min_aporte': 0,
-    'participants': {},
-    'total_pot': 0,
-    'winner': None,
-}
 
-
-@bot.message_handler(commands=['pumpkin'])
-def start_pumpkin(message):
-  if not check_admin(message):
-    return
-  args = message.text.split()
-  if len(args) < 2 or not args[1].isdigit():
-    return bot.reply_to(message, 'Uso correcto: /pumpkin [cantidad_cortesía]')
-
-  cortesia = int(args[1])
-  pumpkin_data['active'] = True
-  pumpkin_data['admin_courtesy'] = cortesia
-  pumpkin_data['min_aporte'] = cortesia
-  pumpkin_data['participants'] = {}
-  pumpkin_data['total_pot'] = cortesia
-  pumpkin_data['winner'] = None
-
-  text = (
-      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
-      'ㅤㅤ𝗁𝖺𝗒 𝗎𝗇𝖺 𝖻𝗋𝗂𝗅𝗅𝖺𝗇𝗍𝖾 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗌𝗉𝖾𝗋𝖺𝗇𝖽𝗈 𝗌𝖾𝗋 𝗅𝗅𝖾𝗇𝖺𝖽𝖺...\n'
-      f'    𝗌𝗎 𝖺𝖽𝗆𝗂𝗇 𝗅𝖾𝗌 𝗁𝖺 𝖺𝗉𝗈𝗋𝗍𝖺𝖽𝗈 {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
-      'ㅤㅤ𝗎𝗌𝖾𝗇 /pozo + 𝖼𝖺𝗇𝗍𝗂𝖽𝖺𝖽 𝘱𝖺𝗋𝖺 𝖽𝖺𝗋 𝗌𝗎 𝖺𝗉𝗈𝗋𝗍𝖾\n'
-      'ㅤㅤ𝗒 𝗍𝖾𝗇𝖾𝗋 𝗈𝗉𝗈𝗋𝗍𝗎𝗇𝗂𝖽𝖺𝖽 𝖽𝖾 𝗀𝖺𝗇𝖺𝗋.\n\n'
-      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝖽𝖾𝗅 𝖺𝖽𝗆𝗂𝗇: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
-      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝗆í𝗇𝗂𝗆𝗈: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n\n'
-      'ㅤㅤ𝖺𝖽𝗆𝗂𝗇, 𝗎𝗌𝖺 /winner 𝗉𝖺𝗋𝖺 𝗋𝖾𝗏𝖾𝗅𝖺𝗋 𝖺𝗅 𝗀𝖺𝗇𝖺𝖽𝗈𝗋 𝖽𝖾\n'
-      'ㅤㅤㅤㅤㅤㅤㅤㅤ 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖽𝗈𝗋𝖺𝖽𝖺.'
-  )
-  bot.send_message(message.chat.id, text)
-
-
-@bot.message_handler(commands=['pozo'])
-def hacer_pozo(message):
-  if not pumpkin_data['active']:
-    return bot.reply_to(
-        message, 'No hay ninguna Golden Pumpkin activa en este momento.'
-    )
-  args = message.text.split()
-  if len(args) < 2 or not args[1].isdigit():
-    return bot.reply_to(message, 'Uso correcto: /pozo [cantidad]')
-
-  aporte = int(args[1])
-  min_req = pumpkin_data['min_aporte']
-  clicker = message.from_user.username
-  if not clicker:
-    return bot.reply_to(
-        message, 'ㅤ⬚  necesitas un @username en Telegram para participar.  ،͟,'
-    )
-  clean_user = sanitize_username(clicker)
-  init_user(clean_user)
-
-  # Validación de Fondos para aportar al pozo
-  if db['users'][clean_user]['caramelos'] < aporte:
-    return bot.reply_to(message, 'ㅤ⬚  no tienes suficientes caramelos  ،͟,')
-
-  if aporte < min_req:
-    return bot.reply_to(
-        message,
-        '( ;´꒳`;)ㅤ𝗍𝗎 𝖺𝗉𝗈𝗋𝗍𝖾 𝖾𝗌 𝗂𝗇𝖿𝖾𝗋𝗂𝗈𝗋 𝖺 𝗅𝖺 𝖼𝖺𝗇𝗍𝗂𝖽𝖺𝖽 𝗋𝖾𝗊𝗎𝖾𝗋𝗂𝖽𝖺...'
-        ' 𝗂𝗇𝗍é𝗇𝗍𝖺𝗅𝗈 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.',
-    )
-
-  db['users'][clean_user]['caramelos'] -= aporte
-  if db['users'][clean_user]['caramelos'] < 0:
-    db['users'][clean_user]['caramelos'] = 0
-    
-  user_mention = f'@{clean_user}'
-  pumpkin_data['participants'][clean_user] = {
-      'mention': user_mention,
-      'aporte': aporte,
-  }
-  pumpkin_data['total_pot'] += aporte
-
-  text = (
-      f'⸜(*ˊᗜˋ*)⸝ㅤ𝗒𝖺𝗒! {user_mention} 𝗀𝗎𝖺𝗋𝖽ó {aporte} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺'
-      ' 𝖼𝖺𝗅𝖺𝖻𝖺𝖼𝗂𝗍𝖺.\n'
-      f"𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺: {pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n"
-      '¿𝖺𝗅𝗀𝗎𝗂𝖾𝗇 𝗆á𝗌?'
-  )
-  bot.reply_to(message, text)
-
-
-@bot.message_handler(commands=['winner', 'newinner'])
-def revelar_ganador(message):
-  if not check_admin(message):
-    return
-  if not pumpkin_data['active'] or not pumpkin_data['participants']:
-    return bot.reply_to(
-        message, 'No hay participantes in la calabaza o no está activa.'
-    )
-
-  ganador_user_key = random.choice(list(pumpkin_data['participants'].keys()))
-  ganador_info = pumpkin_data['participants'][ganador_user_key]
-  pumpkin_data['winner'] = ganador_info
-
-  db['users'][ganador_user_key]['caramelos'] += pumpkin_data['total_pot']
-  if db['users'][ganador_user_key]['caramelos'] < 0:
-    db['users'][ganador_user_key]['caramelos'] = 0
-  
-  # 🎃 Desactivamos la dinámica aquí
-  pumpkin_data['active'] = False
-
-  text = (
-      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
-      'ㅤㅤ¡𝗍𝖾𝗇𝖾𝗆𝗈𝗌 𝖺 𝗎𝗇 𝗀𝖺𝗇𝖺𝖽𝗈𝗋! 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗅𝗂𝗀𝗂ó 𝗌𝗎 \n'
-      'ㅤㅤ𝖽𝖾𝗌𝗍𝗂𝗇𝗈 𝗒 𝗊𝗎𝖾𝖽ó 𝖾𝗇 𝗆𝖺𝗇𝗈𝗌 𝖽𝖾 '
-      f"{ganador_info['mention']} ¡𝖿𝖾𝗅𝗂𝖼𝗂𝖽𝖺𝖽𝖾𝗌! \n"
-      'ㅤㅤ𝖺𝗁𝗈𝗋𝖺 𝖾𝗋𝖾𝗌 𝖽𝗎𝖾ñ𝗈 𝖽𝖾 '
-      f"{pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌."
-  )
-  bot.send_message(message.chat.id, text)
-
-print("Bot iniciado correctamente...")
 bot.infinity_polling()
