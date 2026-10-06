@@ -1171,7 +1171,7 @@ def cmd_pennywise(message):
       'ㅤㅤ𝗉𝗂𝗇𝖼𝗁𝖺𝗓𝗈𝗌: \n'
       f'ㅤㅤ𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌: {bet}\n\n'
       'ㅤㅤㅤ𝗎𝗌𝖺 /leave 𝖼𝗎𝖺𝗇𝖽𝗈 𝗊𝗎𝗂𝖾𝗋𝖺𝗌 𝗋𝖾𝗍𝗂𝗋𝖺𝗋 𝗍𝗎𝗌 𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌.\n'
-      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝗏𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
+      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
   )
   bot.send_message(message.chat.id, text, reply_markup=markup)
 
@@ -1237,7 +1237,7 @@ def handle_penny_pinch(call):
       f'ㅤㅤ𝗉𝗂𝗇𝖼𝗁𝖺𝗓𝗈𝗌: {pins_str}\n'
       f"ㅤㅤ𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌: {game_state['profit']}\n\n"
       'ㅤㅤㅤ𝗎𝗌𝖺 /leave 𝖼𝗎𝖺𝗇𝖽𝗈 𝗊𝗎𝗂𝖾𝗋𝖺𝗌 𝗋𝖾𝗍𝗂𝗋𝖺𝗋 𝗍𝗎𝗌 𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌.\n'
-      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝗏𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
+      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
   )
   bot.send_message(call.message.chat.id, text, reply_markup=markup)
 
@@ -1556,7 +1556,7 @@ def cmd_shop(message):
       "𖥻 `/buy veneno` (Costo: 250 ) ↝ 𝖤𝗅 𝗃𝗎𝗀𝖺𝖽𝗈𝗋 𝖺 𝗊𝗎𝗂é𝗇 𝖾𝗇𝗏𝖾𝗇𝖾𝗇𝖾𝗌 𝗇𝗈 𝗉𝗈𝖽𝗋á 𝗃𝗎𝗀𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝟦 𝗁𝗈𝗋𝖺𝗌.\n"
       "𖥻 `/buy escudo` (Costo: 400 ) ↝ 𝖳𝖾 𝗉𝗋𝗈𝗍𝖾𝗀𝖾 𝖽𝖾 𝗆𝖺𝗅𝖽𝗂𝖼𝗂𝗈𝗇𝖾𝗌 𝗒 𝗏𝖾𝗇𝖾𝗇𝗈𝗌.\n"
       "𖥻 `/buy recompensa` (Costo: 500 ) ↝ 𝖳𝖾 𝗈𝗍𝗈𝗋𝗀𝖺 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇𝗍𝗋𝖾 𝟧𝟢𝟢 𝗒 𝟣𝟢𝟢𝟢 𝗌𝖾𝗀ú𝗇 𝗅𝖺 𝗌𝗎𝖾𝗋𝗍𝖾.\n"
-      "𖥻 `/buy milagrosa` (Costo: 100 ) ↝ 𝖰𝗎𝗂𝗍𝖺 𝖺𝗅𝖾𝖺𝗍𝗈𝗋𝗂𝖺𝗆𝖾𝗇𝗍𝖾 𝖾𝗇𝗍𝗋ེ་ 𝟢 y 𝟤𝟢𝟢 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 a 𝗈𝗍𝗋𝗈 𝗎𝗌𝗎𝖺𝗋𝗂𝗈 𝗊𝗎𝖾 𝖾𝗅𝗂𝗃𝖺𝗌."
+      "𖥻 `/buy milagrosa` (Costo: 100 ) ↝ 𝖰𝗎𝗂𝗍𝖺 𝖺𝗅𝖾𝖺𝗍𝗈𝗋𝗂𝖺𝗆𝖾𝗇𝗍𝖾 𝖾𝗇𝗍𝗋𝖾 𝟢 y 𝟤𝟢𝟢 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 a 𝗈𝗍𝗋𝗈 𝗎𝗌𝗎𝖺𝗋𝗂𝗈 𝗊𝗎𝖾 𝖾𝗅𝗂𝗃𝖺𝗌."
   )
   bot.reply_to(message, text, parse_mode="Markdown")
 
@@ -1854,7 +1854,7 @@ def handle_eye_callback(call):
       db['users'][clean_user]['caramelos'] = 0
     text = (
         ' ㅤ꒰ 👁️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖺𝖼𝖾𝗋𝗍𝖺𝖽𝗈! 𝖾𝗅 𝗈𝗃𝗈 #'
-        f'{winning_pos + 1} 𝗍𝖾 𝗆𝗂𝗋𝖺𝟻𝖺.ㅤㅤㅤㅤㅤㅤ\n'
+        f'{winning_pos + 1} 𝗍𝖾 𝗆𝗂𝗋𝖺𝖻𝖺.ㅤㅤㅤㅤㅤㅤ\n'
         ' ㅤ ㅤㅤ  ㅤ ㅤㅤ  '
         f'𝗀𝖺𝗇𝖺𝗌𝗍𝖾 {ganancia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.'
     )
@@ -1863,7 +1863,7 @@ def handle_eye_callback(call):
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     text = (
-        ' ㅤ꒰ 👁 ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
+        ' ㅤ꒰ 👁️️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
         f'ㅤ𝗇ú𝗆𝖾𝗋𝗈 #{chosen_pos + 1}, 𝗉𝖾𝗋𝗈 𝖾𝗅 𝗊𝗎𝖾 𝗍𝖾 𝗆𝗂𝗋𝖺𝖻𝖺 𝖾𝗋𝖺 𝖾𝗅 𝗈𝗃𝗈 #'
         f'{winning_pos + 1}.\n'
         'ㅤㅤㅤㅤㅤㅤㅤ'
@@ -1953,11 +1953,11 @@ def handle_slot_spin(call):
   init_user(clean_clicker, call.from_user.id)
   if won:
     db['users'][clean_clicker]['caramelos'] += ganancia
-    if db['users'][clean_clicker]['caramelos'] < 0:
+    if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     resultado_txt = f"¡𝗏𝗂𝖼𝗍𝗈𝗋𝗂𝖺! Has ganado {ganancia} caramelos 🍬."
   else:
-    db['users'][clean_clicker]['caramelos'] -= bet
+    db['users'][clean_user]['caramelos'] -= bet
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     resultado_txt = f"No hubo suerte esta vez. Perdiste {bet} caramelos."
@@ -1967,13 +1967,176 @@ def handle_slot_spin(call):
       f"ㅤㅤㅤㅤㅤㅤ {grid[0][0]} | {grid[0][1]} | {grid[0][2]}\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[1][0]} | {grid[1][1]} | {grid[1][2]}\n"
       f"ㅤㅤㅤㅤㅤㅤ {grid[2][0]} | {grid[2][1]} | {grid[2][2]}\n\n"
-      f"ㅤㅤapuesta: {bet} caramelos.\n"
+      f"ㅤㅤ𝖺𝗉𝗎𝖾𝗌𝗍𝖺: {bet} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌. \n"
       f"ㅤㅤ{resultado_txt}"
   )
   try:
-    bot.edit_message_text(text, call.message.chat.id, call.message.message_id)
+    bot.edit_message_text(text, call.message.chat.id, call.message.message_id, reply_markup=None)
   except Exception:
     pass
 
+# ==========================================
+# === DINÁMICA: GOLDEN PUMPKIN ===
+# ==========================================
+pumpkin_data = {
+    'active': False,
+    'admin_courtesy': 0,
+    'min_aporte': 0,
+    'participants': {},
+    'total_pot': 0,
+    'winner': None,
+}
+
+
+@bot.message_handler(commands=['pumpkin'])
+def start_pumpkin(message):
+  if not check_admin(message):
+    return
+  args = message.text.split()
+  if len(args) < 2 or not args[1].isdigit():
+    return bot.reply_to(message, 'Uso correcto: /pumpkin [cantidad_cortesía]')
+
+  cortesia = int(args[1])
+  pumpkin_data['active'] = True
+  pumpkin_data['admin_courtesy'] = cortesia
+  pumpkin_data['min_aporte'] = cortesia
+  pumpkin_data['participants'] = {}
+  pumpkin_data['total_pot'] = cortesia
+  pumpkin_data['winner'] = None
+
+ text = (
+      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
+      'ㅤㅤ𝗁𝖺𝗒 𝗎𝗇𝖺 𝖻𝗋𝗂𝗅𝗅𝖺𝗇𝗍𝖾 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗌𝗉𝖾𝗋𝖺𝗇𝖽𝗈 𝗌𝖾𝗋 𝗅𝗅𝖾𝗇𝖺𝖽𝖺...\n'
+      f'    𝗌𝗎 𝖺𝖽𝗆𝗂𝗇 𝗅𝖾𝗌 𝗁𝖺 𝖺𝗉𝗈𝗋𝗍𝖺𝖽𝗈 {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
+      'ㅤㅤ𝗎𝗌𝖾𝗇 /pozo + 𝖼𝖺𝗇𝗍𝗂𝖽𝖺𝖽 𝘱𝖺𝗋𝖺 𝖽𝖺𝗋 𝗌𝗎 𝖺𝗉𝗈𝗋𝗍𝖾\n'
+      'ㅤㅤ𝗒 𝗍𝖾𝗇𝖾𝗋 𝗈𝗉𝗈𝗋𝗍𝗎𝗇𝗂𝖽𝖺𝖽 𝖽𝖾 𝗀𝖺𝗇𝖺𝗋.\n\n'
+      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝖽𝖾𝗅 𝖺𝖽𝗆𝗂𝗇: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
+      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝗆í𝗇𝗂𝗆𝗈: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n\n'
+      'ㅤㅤ𝖺𝖽𝗆𝗂𝗇, 𝗎𝗌𝖺 /winner 𝗉𝖺𝗋𝖺 𝗋𝖾𝗏𝖾𝗅𝖺𝗋 𝖺𝗅 𝗀𝖺𝗇𝖺𝖽𝗈𝗋 𝖽𝖾\n'
+      'ㅤㅤㅤㅤㅤㅤㅤㅤ 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖽𝗈𝗋𝖺𝖽𝖺.'
+  )
+  bot.send_message(message.chat.id, text)
+
+
+@bot.message_handler(commands=['pozo'])
+def hacer_pozo(message):
+  if not pumpkin_data['active']:
+    return bot.reply_to(
+        message, 'No hay ninguna Golden Pumpkin activa en este momento.'
+    )
+  args = message.text.split()
+  if len(args) < 2 or not args[1].isdigit():
+    return bot.reply_to(message, 'Uso correcto: /pozo [cantidad]')
+
+  aporte = int(args[1])
+  min_req = pumpkin_data['min_aporte']
+  clicker = message.from_user.username
+  if not clicker:
+    return bot.reply_to(
+        message, 'ㅤ⬚  necesitas un @username en Telegram para participar.  ،͟,'
+    )
+  clean_user = sanitize_username(clicker)
+  init_user(clean_user)
+
+  # Validación de Fondos para aportar al pozo
+  if db['users'][clean_user]['caramelos'] < aporte:
+    return bot.reply_to(message, 'ㅤ⬚  no tienes suficientes caramelos  ،͟,')
+
+  if aporte < min_req:
+    return bot.reply_to(
+        message,
+        '( ;´꒳`;)ㅤ𝗍𝗎 𝖺𝗉𝗈𝗋𝗍𝖾 𝖾𝗌 𝗂𝗇𝖿𝖾𝗋𝗂𝗈𝗋 𝖺 𝗅𝖺 𝖼𝖺𝗇𝗍𝗂𝖽𝖺𝖽 𝗋𝖾𝗊𝗎𝖾𝗋𝗂𝖽𝖺...'
+        ' 𝗂𝗇𝗍é𝗇𝗍𝖺𝗅𝗈 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.',
+    )
+
+  db['users'][clean_user]['caramelos'] -= aporte
+  if db['users'][clean_user]['caramelos'] < 0:
+    db['users'][clean_user]['caramelos'] = 0
+    
+  user_mention = f'@{clean_user}'
+  pumpkin_data['participants'][clean_user] = {
+      'mention': user_mention,
+      'aporte': aporte,
+  }
+  pumpkin_data['total_pot'] += aporte
+
+  text = (
+      f'⸜(*ˊᗜˋ*)⸝ㅤ𝗒𝖺𝗒! {user_mention} 𝗀𝗎𝖺𝗋𝖽ó {aporte} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺'
+      ' 𝖼𝖺𝗅𝖺𝖻𝖺𝖼𝗂𝗍𝖺.\n'
+      f"𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺: {pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n"
+      '¿𝖺𝗅𝗀𝗎𝗂𝖾𝗇 𝗆á𝗌?'
+  )
+  bot.reply_to(message, text)
+
+
+@bot.message_handler(commands=['winner', 'newinner'])
+def revelar_ganador(message):
+  if not check_admin(message):
+    return
+  if not pumpkin_data['active'] or not pumpkin_data['participants']:
+    return bot.reply_to(
+        message, 'No hay participantes in la calabaza o no está activa.'
+    )
+
+  ganador_user_key = random.choice(list(pumpkin_data['participants'].keys()))
+  ganador_info = pumpkin_data['participants'][ganador_user_key]
+  pumpkin_data['winner'] = ganador_info
+
+  db['users'][ganador_user_key]['caramelos'] += pumpkin_data['total_pot']
+  if db['users'][ganador_user_key]['caramelos'] < 0:
+    db['users'][ganador_user_key]['caramelos'] = 0
+  
+  # 🎃 Desactivamos la dinámica aquí
+  pumpkin_data['active'] = False
+
+  text = (
+      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
+      'ㅤㅤ¡𝗍𝖾𝗇𝖾𝗆𝗈𝗌 𝖺 𝗎𝗇 𝗀𝖺𝗇𝖺𝖽𝗈𝗋! 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗅𝗂𝗀𝗂ó 𝗌𝗎 \n'
+      'ㅤㅤ𝖽𝖾𝗌𝗍𝗂𝗇𝗈 𝗒 𝗊𝗎𝖾𝖽ó 𝖾𝗇 𝗆𝖺𝗇𝗈𝗌 𝖽𝖾 '
+      f"{ganador_info['mention']} ¡𝖿𝖾𝗅𝗂𝖼𝗂𝖽𝖺𝖽𝖾𝗌! \n"
+      'ㅤㅤ𝖺𝗁𝗈𝗋𝖺 𝖾𝗋𝖾𝗌 𝖽𝗎𝖾ñ𝗈 𝖽𝖾 '
+      f"{pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌."
+  )
+  bot.send_message(message.chat.id, text)
+
+
+# ID de la Administradora Suprema (reemplázalo por tu ID numérico real de Telegram)
+SUPER_ADMIN_ID = 5398217730
+
+# Conjunto (set) para almacenar los IDs de los administradores adicionales
+admins = set()
+
+@bot.message_handler(commands=['admin'])
+def dar_admin(message):
+    # 1. Verificar si el comando lo ejecuta la Administradora Suprema
+    if message.from_user.id != SUPER_ADMIN_ID:
+        bot.reply_to(message, "⚠️ No tienes permisos para usar este comando.")
+        return
+
+    # 2. Obtener los argumentos del comando (espera el ID del usuario)
+    texto = message.text.split()
+    if len(texto) < 2:
+        bot.reply_to(message, "❌ Debes indicar el ID del usuario. Ejemplo: /admin 987654321")
+        return
+
+    try:
+        nuevo_admin_id = int(texto[1])
+    except ValueError:
+        bot.reply_to(message, "❌ El ID debe ser un número válido.")
+        return
+
+    # 3. Agregar el ID a la lista de administradores
+    admins.add(nuevo_admin_id)
+    bot.reply_to(message, f"✅ ¡Usuario `{nuevo_admin_id}` añadido como administrador correctamente!", parse_mode="Markdown")
+
+# Ejemplo de comando restringido solo para administradores (incluida la Suprema)
+@bot.message_handler(commands=['panel'])
+def panel_admin(message):
+    user_id = message.from_user.id
+    if user_id != SUPER_ADMIN_ID and user_id not in admins:
+        bot.reply_to(message, "⛔ Este comando es exclusivo para administradores.")
+        return
+    
+    bot.reply_to(message, "🔓 Bienvenido al panel de administración.")
 
 bot.infinity_polling()
