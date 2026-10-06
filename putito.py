@@ -1171,7 +1171,7 @@ def cmd_pennywise(message):
       'ㅤㅤ𝗉𝗂𝗇𝖼𝗁𝖺𝗓𝗈𝗌: \n'
       f'ㅤㅤ𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌: {bet}\n\n'
       'ㅤㅤㅤ𝗎𝗌𝖺 /leave 𝖼𝗎𝖺𝗇𝖽𝗈 𝗊𝗎𝗂𝖾𝗋𝖺𝗌 𝗋𝖾𝗍𝗂𝗋𝖺𝗋 𝗍𝗎𝗌 𝗀𝖺𝗇𝖺𝗇𝖼𝗂𝖺𝗌.\n'
-      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻𝗈𝗍ó𝗇 𝗉𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
+      'ㅤㅤㅤㅤ𝗉𝗋𝖾𝗌𝗂𝗈𝗇𝖺 𝖾𝗅 𝖻𝗈𝗍ó𝗇 𝘱𝖺𝗋𝖺 𝗉𝗂𝗇𝖼𝗁𝖺𝗋 𝖽𝖾 𝗇𝗎𝖾𝗏𝗈.'
   )
   bot.send_message(message.chat.id, text, reply_markup=markup)
 
@@ -1554,7 +1554,7 @@ def cmd_shop(message):
       f"Saldo actual: {balance} 🍬 \n\n"
       "𝖢𝗈𝗆𝗉𝗋𝖺 𝗈𝖻𝗃𝖾𝗍𝗈𝗌 𝗆á𝗀𝗂𝖼𝗈𝗌 𝗀𝖺𝗌𝗍𝖺𝗇𝖽𝗈 𝗍𝗎𝗌 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌:\n\n"
       "𖥻 `/buy veneno` (Costo: 250 ) ↝ 𝖤𝗅 𝗃𝗎𝗀𝖺𝖽𝗈𝗋 𝖺 𝗊𝗎𝗂é𝗇 𝖾𝗇𝗏𝖾𝗇𝖾𝗇𝖾𝗌 𝗇𝗈 𝗉𝗈𝖽𝗋á 𝗃𝗎𝗀𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝟦 𝗁𝗈𝗋𝖺𝗌.\n"
-      "𖥻 `/buy escudo` (Costo: 400 ) ↝ 𝖳𝖾 𝗉𝗋𝗈𝗍𝖾𝗀𝖾 𝖽𝖾 𝗆𝖺𝗅𝖽𝗂𝖼𝗂𝗈𝗇𝖾𝗌 𝗒 𝗏𝖾𝗇𝖾𝗇𝗈𝗌.\n"
+      "𖥻 `/buy escudo` (Costo: 400 ) ↝ 𝖳𝖾 𝘱𝗋𝗈𝗍𝖾𝗀𝖾 𝖽𝖾 𝗆𝖺𝗅𝖽𝗂𝖼𝗂𝗈𝗇𝖾𝗌 𝗒 𝗏𝖾𝗇𝖾𝗇𝗈𝗌.\n"
       "𖥻 `/buy recompensa` (Costo: 500 ) ↝ 𝖳𝖾 𝗈𝗍𝗈𝗋𝗀𝖺 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇𝗍𝗋𝖾 𝟧𝟢𝟢 𝗒 𝟣𝟢𝟢𝟢 𝗌𝖾𝗀ú𝗇 𝗅𝖺 𝗌𝗎𝖾𝗋𝗍𝖾.\n"
       "𖥻 `/buy milagrosa` (Costo: 100 ) ↝ 𝖰𝗎𝗂𝗍𝖺 𝖺𝗅𝖾𝖺𝗍𝗈𝗋𝗂𝖺𝗆𝖾𝗇𝗍𝖾 𝖾𝗇𝗍𝗋𝖾 𝟢 y 𝟤𝟢𝟢 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 a 𝗈𝗍𝗋𝗈 𝗎𝗌𝗎𝖺𝗋𝗂𝗈 𝗊𝗎𝖾 𝖾𝗅𝗂𝗃𝖺𝗌."
   )
@@ -1863,7 +1863,7 @@ def handle_eye_callback(call):
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
     text = (
-        ' ㅤ꒰ 👁️️ ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
+        ' ㅤ꒰ 👁 ꒱ ㅤㅤ ¡𝗁𝖺𝗌 𝖿𝖺𝗅𝗅𝖺𝖽𝗈! 𝖾𝗅𝖾𝗀𝗂𝗌𝗍𝖾 𝖾𝗅 𝗈𝗃𝗈 ㅤㅤㅤㅤㅤㅤ\n'
         f'ㅤ𝗇ú𝗆𝖾𝗋𝗈 #{chosen_pos + 1}, 𝗉𝖾𝗋𝗈 𝖾𝗅 𝗊𝗎𝖾 𝗍𝖾 𝗆𝗂𝗋𝖺𝖻𝖺 𝖾𝗋𝖺 𝖾𝗅 𝗈𝗃𝗈 #'
         f'{winning_pos + 1}.\n'
         'ㅤㅤㅤㅤㅤㅤㅤ'
@@ -2004,19 +2004,14 @@ def start_pumpkin(message):
   pumpkin_data['total_pot'] = cortesia
   pumpkin_data['winner'] = None
 
- text = (
+  pumpkin_data['active'] = False
+
+  text = (
       'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
-      'ㅤㅤ𝗁𝖺𝗒 𝗎𝗇𝖺 𝖻𝗋𝗂𝗅𝗅𝖺𝗇𝗍𝖾 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗌𝗉𝖾𝗋𝖺𝗇𝖽𝗈 𝗌𝖾𝗋 𝗅𝗅𝖾𝗇𝖺𝖽𝖺...\n'
-      f'    𝗌𝗎 𝖺𝖽𝗆𝗂𝗇 𝗅𝖾𝗌 𝗁𝖺 𝖺𝗉𝗈𝗋𝗍𝖺𝖽𝗈 {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
-      'ㅤㅤ𝗎𝗌𝖾𝗇 /pozo + 𝖼𝖺𝗇𝗍𝗂𝖽𝖺𝖽 𝘱𝖺𝗋𝖺 𝖽𝖺𝗋 𝗌𝗎 𝖺𝗉𝗈𝗋𝗍𝖾\n'
-      'ㅤㅤ𝗒 𝗍𝖾𝗇𝖾𝗋 𝗈𝗉𝗈𝗋𝗍𝗎𝗇𝗂𝖽𝖺𝖽 𝖽𝖾 𝗀𝖺𝗇𝖺𝗋.\n\n'
-      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝖽𝖾𝗅 𝖺𝖽𝗆𝗂𝗇: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n'
-      f'ㅤㅤ𝖺𝗉𝗈𝗋𝗍𝖾 𝗆í𝗇𝗂𝗆𝗈: {cortesia} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n\n'
-      'ㅤㅤ𝖺𝖽𝗆𝗂𝗇, 𝗎𝗌𝖺 /winner 𝗉𝖺𝗋𝖺 𝗋𝖾𝗏𝖾𝗅𝖺𝗋 𝖺𝗅 𝗀𝖺𝗇𝖺𝖽𝗈𝗋 𝖽𝖾\n'
-      'ㅤㅤㅤㅤㅤㅤㅤㅤ 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖽𝗈𝗋𝖺𝖽𝖺.'
+      'ㅤㅤ¡La Golden Pumpkin ha sido configurada con éxito!\n'
+      f'ㅤㅤAporte mínimo inicial: {cortesia} caramelos.'
   )
   bot.send_message(message.chat.id, text)
-
 
 @bot.message_handler(commands=['pozo'])
 def hacer_pozo(message):
@@ -2038,7 +2033,6 @@ def hacer_pozo(message):
   clean_user = sanitize_username(clicker)
   init_user(clean_user)
 
-  # Validación de Fondos para aportar al pozo
   if db['users'][clean_user]['caramelos'] < aporte:
     return bot.reply_to(message, 'ㅤ⬚  no tienes suficientes caramelos  ،͟,')
 
@@ -2061,44 +2055,11 @@ def hacer_pozo(message):
   pumpkin_data['total_pot'] += aporte
 
   text = (
-      f'⸜(*ˊᗜˋ*)⸝ㅤ𝗒𝖺𝗒! {user_mention} 𝗀𝗎𝖺𝗋𝖽ó {aporte} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺'
-      ' 𝖼𝖺𝗅𝖺𝖻𝖺𝖼𝗂𝗍𝖺.\n'
-      f"𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺: {pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌.\n"
-      '¿𝖺𝗅𝗀𝗎𝗂𝖾𝗇 𝗆á𝗌?'
+      f"ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n"
+      f"ㅤㅤ¡Has aportado {aporte} caramelos al pozo!\n"
+      f"ㅤㅤEl pozo total actual es de: {pumpkin_data['total_pot']} caramelos."
   )
   bot.reply_to(message, text)
-
-
-@bot.message_handler(commands=['winner', 'newinner'])
-def revelar_ganador(message):
-  if not check_admin(message):
-    return
-  if not pumpkin_data['active'] or not pumpkin_data['participants']:
-    return bot.reply_to(
-        message, 'No hay participantes in la calabaza o no está activa.'
-    )
-
-  ganador_user_key = random.choice(list(pumpkin_data['participants'].keys()))
-  ganador_info = pumpkin_data['participants'][ganador_user_key]
-  pumpkin_data['winner'] = ganador_info
-
-  db['users'][ganador_user_key]['caramelos'] += pumpkin_data['total_pot']
-  if db['users'][ganador_user_key]['caramelos'] < 0:
-    db['users'][ganador_user_key]['caramelos'] = 0
-  
-  # 🎃 Desactivamos la dinámica aquí
-  pumpkin_data['active'] = False
-
-  text = (
-      'ㅤ   ᩙᩙ     ㅤㅤ﹙🎃﹚     𝗀𝗈𝗅𝖽𝖾𝗇 𝗉𝗎𝗆𝗉𝗄𝗂𝗇    .ᐟㅤㅤㅤㅤㅤㅤ\n\n'
-      'ㅤㅤ¡𝗍𝖾𝗇𝖾𝗆𝗈𝗌 𝖺 𝗎𝗇 𝗀𝖺𝗇𝖺𝖽𝗈𝗋! 𝗅𝖺 𝖼𝖺𝗅𝖺𝖻𝖺𝗓𝖺 𝖾𝗅𝗂𝗀𝗂ó 𝗌𝗎 \n'
-      'ㅤㅤ𝖽𝖾𝗌𝗍𝗂𝗇𝗈 𝗒 𝗊𝗎𝖾𝖽ó 𝖾𝗇 𝗆𝖺𝗇𝗈𝗌 𝖽𝖾 '
-      f"{ganador_info['mention']} ¡𝖿𝖾𝗅𝗂𝖼𝗂𝖽𝖺𝖽𝖾𝗌! \n"
-      'ㅤㅤ𝖺𝗁𝗈𝗋𝖺 𝖾𝗋𝖾𝗌 𝖽𝗎𝖾ñ𝗈 𝖽𝖾 '
-      f"{pumpkin_data['total_pot']} 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌."
-  )
-  bot.send_message(message.chat.id, text)
-
 
 # ID de la Administradora Suprema (reemplázalo por tu ID numérico real de Telegram)
 SUPER_ADMIN_ID = 5398217730
