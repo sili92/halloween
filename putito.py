@@ -1581,7 +1581,7 @@ def cmd_shop(message):
       "𝖢𝗈𝗆𝗉𝗋𝖺 𝗈𝖻𝗃𝖾𝗍𝗈𝗌 𝗆á𝗀𝗂𝖼𝗈𝗌 𝗀𝖺𝗌𝗍𝖺𝗇𝖽𝗈 𝗍𝗎𝗌 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌:\n\n"
       f"𖥻 `/buy veneno` (Costo: 600 ) ↝ 𝖤𝗅 𝗃𝗎𝗀𝖺𝖽𝗈𝗋 𝖺 𝗊𝗎𝗂é𝗇 𝖾𝗇𝗏𝖾𝗇𝖾𝗇𝖾𝗌 𝗇𝗈 𝗉𝗈𝖽𝗋á 𝗃𝗎𝗀𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝟦 𝗁𝗈𝗋𝖺𝗌. (Usos hoy: {veneno_usado}/3)\n"
       f"𖥻 `/buy escudo` (Costo: 800 ) ↝ 𝖳𝖾 𝘱𝗋𝗈𝗍𝖾𝗀𝖾 𝖽𝖾 𝗆𝖺𝗅𝖽𝗂𝖼𝗂𝗈𝗇𝖾𝗌 𝗒 𝗏𝖾𝗇𝖾𝗇𝗈𝗌. (Usos hoy: {escudo_usado}/1)\n"
-      f"𖥻 `/buy recompensa` (Costo: 1000 ) ↝ 𝖳𝖾 𝗈𝗍𝗈𝗋𝗀𝖺 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇𝗍𝗋𝖾 𝟣𝟢𝟢𝟢 𝗒 𝟣𝟧𝟢𝟢𝟢 𝗌𝖾𝗀ú𝗇 𝗅𝖺 𝗌𝗎𝖾𝗋𝗍𝖾. (Usos hoy: {recompensa_usado}/3)\n"
+      f"𖥻 `/buy recompensa` (Costo: 1000 ) ↝ 𝖳𝖾 𝗈𝗍𝗈𝗋𝗀𝖺 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 𝖾𝗇𝗍𝗋𝖾 𝟣𝟢𝟢𝟢 𝗒 𝟣𝟧𝟢𝟢 𝗌𝖾𝗀ú𝗇 𝗅𝖺 𝗌𝗎𝖾𝗋𝗍𝖾. (Usos hoy: {recompensa_usado}/3)\n"
       f"𖥻 `/buy milagrosa` (Costo: 500 ) ↝ 𝖰𝗎𝗂𝗍𝖺 𝖺𝗅𝖾𝖺𝗍𝗈𝗋𝗂𝖺𝗆𝖾𝗇𝗍𝖾 𝖾𝗇𝗍𝗋𝖾 𝟢 y 𝟧𝟢𝟢 𝖼𝖺𝗋𝖺𝗆𝖾𝗅𝗈𝗌 a 𝗈𝗍𝗋𝗈 𝗎𝗌𝗎𝖺𝗋𝗂𝗈 𝗊𝗎𝖾 𝖾𝗅𝗂𝗃𝖺𝗌. (Usos hoy: {milagrosa_usado}/3)"
   )
   bot.reply_to(message, text, parse_mode="Markdown")
@@ -1623,7 +1623,7 @@ def cmd_buy(message):
     db['users'][clean_user]['caramelos'] -= cost
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
-    premio = random.randint(1000, 15000)
+    premio = random.randint(1000, 1450)
     db['users'][clean_user]['caramelos'] += premio
     if db['users'][clean_user]['caramelos'] < 0:
       db['users'][clean_user]['caramelos'] = 0
